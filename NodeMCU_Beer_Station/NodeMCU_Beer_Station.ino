@@ -9,19 +9,22 @@ void setup()
   lcd.backlight();
   ///
  pinMode(LED_BUILTIN, OUTPUT);     // Initialize the LED_BUILTIN pin as an output
-  }
+}
 
-//////////funções
+//////////funções/////////////////////////////////////////////////////////////////////////////////////
 void ledstdby (void)
 {
   digitalWrite(LED_BUILTIN, LOW);   // Turn the LED on (Note that LOW is the voltage level
   // but actually the LED is on; this is because
   // it is active low on the ESP-01)
-  delay(1500);                      // Wait for a second
+  delay(2000);                      // Wait for a second
   digitalWrite(LED_BUILTIN, HIGH);  // Turn the LED off by making the voltage HIGH
-  delay(3000);  
+  delay(1000);  
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////main///////////////////////////////////////////////////////////////////////////////////////
 void loop()
 {
   lcd.setCursor(0,0);
@@ -29,7 +32,7 @@ void loop()
   lcd.setCursor(0,1);
   lcd.print(" MIYAKODA TECH  ");
   ///
-  ledstdby;
+ledstdby();
 
 
   ///
