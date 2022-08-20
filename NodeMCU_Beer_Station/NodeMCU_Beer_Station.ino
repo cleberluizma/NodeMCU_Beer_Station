@@ -12,10 +12,11 @@ const char* password = "nicole12";
 
 ESP8266WebServer server(80);
 
-const int led = 2;
+//const int led = 2;
 
-void handleRoot() {
-  digitalWrite(led, 1);
+void handleRoot() 
+{
+//  digitalWrite(led, 1);
 
   String textoHTML;
 
@@ -24,11 +25,11 @@ void handleRoot() {
   textoHTML += analogRead(A0);
    
   server.send(200, "text/html", textoHTML);
-  digitalWrite(led, 0);
+  //digitalWrite(led, 0);
 }
 
 void handleNotFound(){
-  digitalWrite(led, 1);
+//  digitalWrite(led, 1);
   String message = "File Not Found\n\n";
   message += "URI: ";
   message += server.uri();
@@ -41,7 +42,7 @@ void handleNotFound(){
     message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
   }
   server.send(404, "text/plain", message);
-  digitalWrite(led, 0);
+  //digitalWrite(led, 0);
 }
 
 void setup()
