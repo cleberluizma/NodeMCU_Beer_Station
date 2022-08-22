@@ -10,22 +10,15 @@ LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x3F for a 20 chars
 const char* ssid = "Miyakoda";
 const char* password = "nicole12";
 
-ESP8266WebServer server(80);
-
-//const int led = 2;
-
 void handleRoot() 
 {
-//  digitalWrite(led, 1);
-
   String textoHTML;
 
-  textoHTML = "Ola!! Aqui &eacute; o <b>ESP8266</b> falando! ";
-  textoHTML += "Porta A0: ";
-  textoHTML += analogRead(A0);
+ textoHTML = "Ola!! Aqui &eacute; o <b>ESP8266</b> falando! ";
+ textoHTML += "Porta A0: ";
+ textoHTML += analogRead(A0);
    
-  server.send(200, "text/html", textoHTML);
-  //digitalWrite(led, 0);
+  server.send(200, "text/html", textoHTML);  //digitalWrite(led, 0);
 }
 
 void handleNotFound(){
@@ -42,11 +35,12 @@ void handleNotFound(){
     message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
   }
   server.send(404, "text/plain", message);
-  //digitalWrite(led, 0);
 }
 
 void setup()
 {
+  int dotconectando = 0;
+  
   lcd.init();                      // initialize the lcd   
   lcd.backlight();
   ///
@@ -65,9 +59,10 @@ void setup()
     Serial.print(".");
     lcd.setCursor(0,0);
     lcd.print("CONECTANDO WIFI");  
-    lcd.setCursor(0,1);
-    lcd.print("...............");
+    lcd.setCursor(dotconectando,1);
+    lcd.print(".");
     ledconectando();
+    dotconettando++
   }
   lcd.clear();
   Serial.println("");
