@@ -10,19 +10,34 @@ LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x3F for a 20 chars
 const char* ssid = "Miyakoda";
 const char* password = "nicole12";
 
+<<<<<<< HEAD
 void handleRoot() 
 {
+=======
+ESP8266WebServer server(80);
+
+const int led = 2;
+
+void handleRoot() {
+  digitalWrite(led, 1);
+
+>>>>>>> parent of 52efb1f (just updated)
   String textoHTML;
 
  textoHTML = "Ola!! Aqui &eacute; o <b>ESP8266</b> falando! ";
  textoHTML += "Porta A0: ";
  textoHTML += analogRead(A0);
    
+<<<<<<< HEAD
   server.send(200, "text/html", textoHTML);  //digitalWrite(led, 0);
+=======
+  server.send(200, "text/html", textoHTML);
+  digitalWrite(led, 0);
+>>>>>>> parent of 52efb1f (just updated)
 }
 
 void handleNotFound(){
-//  digitalWrite(led, 1);
+  digitalWrite(led, 1);
   String message = "File Not Found\n\n";
   message += "URI: ";
   message += server.uri();
@@ -35,6 +50,10 @@ void handleNotFound(){
     message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
   }
   server.send(404, "text/plain", message);
+<<<<<<< HEAD
+=======
+  digitalWrite(led, 0);
+>>>>>>> parent of 52efb1f (just updated)
 }
 
 void setup()
